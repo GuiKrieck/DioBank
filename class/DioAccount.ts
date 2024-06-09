@@ -21,7 +21,7 @@ export abstract class DioAccount {
   deposit = (value: number): void => {
     if(this.validateStatus()){
       this.balance += value
-      console.log(`Deposito realizado com sucesso, seu novo saldo é ${this.balance}`)
+      console.log(`Deposito realizado com sucesso!`)
     }
   }
 
@@ -29,7 +29,7 @@ export abstract class DioAccount {
     if(this.validateStatus()){
       if(this.balance >= value){
         this.balance -= value
-        console.log(`Saque realizado com sucesso, seu saldo remanescente é ${this.balance}`)
+        console.log(`Saque realizado com sucesso!`)
       }else {
         console.log('Saldo insuficiente para saque')
       }
@@ -40,7 +40,12 @@ export abstract class DioAccount {
     console.log(this.balance)
   }
 
-  private validateStatus = (): boolean => {
+
+  changeValidateStatus = ():void =>{
+    this.status = !this.status;
+  } 
+  
+  validateStatus = (): boolean => {
     if (this.status) {
       return this.status
     }
